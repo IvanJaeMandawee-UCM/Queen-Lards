@@ -37,19 +37,7 @@
         <button type="submit" class="btn btn-primary">Add person</button>
       </form>
 
-      <div class="person-list">
-        {% for person in people %}
-        <div class="person-row">
-          <div class="avatar {{ 'rose' if loop.index0 % 3 == 1 else ('gold' if loop.index0 % 3 == 2 else '') }}">{{ person.name[0] | upper }}</div>
-          <div class="info">
-           
-          </div>
-        </div>
-        {% else %}
-        <p>No one's been added yet.</p>
-        {% endfor %}
-      </div>
-    </div>
+      
   </main>
 
 </body>
