@@ -21,12 +21,12 @@
       <form method="POST" action="{{ url_for('add_person') }}">
         <div class="field">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" value="{{ name or '' }}" placeholder="e.g. Tita Rose">
+          <input type="text" id="name" name="name" value="{{ name or '' }}" placeholder="Name">
         </div>
 
         <div class="field">
           <label for="number">Number</label>
-          <input type="tel" id="number" name="number" value="{{ number or '' }}" placeholder="e.g. +1 555-0123">
+          <input type="tel" id="number" name="number" value="{{ number or '' }}" placeholder="+63*** *** ****">
         </div>
 
         {% if error %}
