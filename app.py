@@ -39,8 +39,8 @@ AVATAR_CLASSES = ["", "rose", "gold"]
 
 # In-memory list of family members added from the People page.
 people = [
-    {"name": "Mom", "number": "+1 555-0101"},
-    {"name": "Tito Ben", "number": "+1 555-0134"},
+    {"name": "", "": ""},
+    {"name": "", "": ""},
 ]
 
 EMAIL_PATTERN = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
