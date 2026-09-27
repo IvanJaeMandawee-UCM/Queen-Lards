@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Queen's Lards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="app-shell">
+
+  {% set active = 'home' %}
+  {% include 'partials/nav_app.html' %}
+
+  <main class="app-main">
+
+    <form class="composer" method="POST" action="{{ url_for('add_post') }}">
+      {% if user_picture %}
+      <img class="avatar" src="{{ url_for('static', filename='uploads/' + user_picture) }}" alt="">
+      {% else %}
+      <div class="avatar">{{ (user_name or 'Y')[0] | upper }}</div>
+      {% endif %}
+      <input type="text" name="content" placeholder="Share a memory, photo, or story…" aria-label="Share a memory" required>
+      <button class="btn btn-primary" type="submit">Post</button>
+    </form>
+
+    {% for post in posts %}
+    <article class="post">
+      <div class="post-head">
+        <div class="avatar {{ post.avatar_class }}">{{ post.initial }}</div>
+        <div>
+          <span class="who">{{ post.who }}</span>
+          <span class="when">{{ post.when }}</span>
+        </div>
+      </div>
+      <p>{{ post.text }}</p>
+      {% if post.photo %}
+      <div class="post-photo">photo</div>
+      {% endif %}
+      <div class="post-actions">
+        <button type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.2C.5 9 2 5 6 5c2 0 3.5 1 4 2.5C10.5 6 12 5 14 5c4 0 5.5 4 3.5 7.8C19 16.65 12 21 12 21Z"/></svg>
+          Love
+        </button>
+        <button type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10Z"/></svg>
+          Comment
+        </button>
+      </div>
+    </article>
+    {% else %}
+    <p style="text-align: center; color: var(--ink-soft); padding: 2rem 0;">
+      No memories yet — be the first to share one above.
+    </p>
+    {% endfor %}
+
+  </main>
+
+</body>
+</html>

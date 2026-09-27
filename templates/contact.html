@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact · Queen's Lards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="app-shell">
+
+  {% set active = 'contact' %}
+  {% include 'partials/nav_app.html' %}
+
+  <main class="app-main">
+    <div class="page-block">
+      <h2>Contact</h2>
+      <p>Have a photo, recipe, or story you'd like added but can't post yourself? Reach out to whoever set up this page and they can add it for you.</p>
+      <p>Replace this with a real email address or form whenever you're ready.</p>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,676 @@
+/* ==========================================================================
+   Queen's Lards — shared stylesheet
+   A quiet, heirloom feel: linen background, deep botanical green,
+   dusty rose accent, gold hairlines. One flourish carries the warmth;
+   everything else stays plain so the family's own words stand out.
+   ========================================================================== */
+
+:root {
+  --bg: #faf6ef;
+  --bg-alt: #f1e8da;
+  --ink: #2e2a22;
+  --ink-soft: #5a5344;
+  --green: #3b4a34;
+  --green-dark: #2a3526;
+  --rose: #b97d74;
+  --gold: #a8874f;
+  --gold-line: #d9c9a3;
+  --error: #a3392e;
+  --error-bg: #f8ece9;
+  --white: #fffdf9;
+
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --radius: 6px;
+  --border: 1px solid #e4d9c3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  color: var(--green-dark);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  font-weight: 600;
+}
+
+a {
+  color: var(--rose);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 2px;
+}
+
+p {
+  margin: 0 0 1em;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.7em 1.5em;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: var(--green-dark);
+  text-decoration: none;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--green-dark);
+  border-color: var(--green);
+}
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background: var(--green);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ---------- public nav (landing / login / signup) ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.wordmark {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--green-dark);
+  letter-spacing: 0.01em;
+}
+
+.wordmark a {
+  color: inherit;
+}
+.wordmark a:hover {
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 4rem 3rem 5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 620px);
+  justify-content: start;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  max-width: 14ch;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1.75rem;
+}
+
+/* ---------- flourish divider ---------- */
+
+.flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  color: var(--gold);
+}
+
+.flourish::before,
+.flourish::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--gold-line);
+}
+
+.flourish svg {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+/* ---------- features ---------- */
+
+.features {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 4rem 3rem 5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.feature {
+  border-top: 1px solid var(--gold-line);
+  padding-top: 1.25rem;
+}
+
+.feature h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.4em;
+}
+
+/* ---------- site footer ---------- */
+
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem 3rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+/* ---------- auth pages (login / signup) ---------- */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2.5rem 2.25rem;
+  background: var(--white);
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius);
+  position: relative;
+}
+
+/* an inner hairline gives the "frame within a frame" feel without clutter */
+.auth-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid #eee2cb;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.auth-card h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.25em;
+}
+
+.auth-sub {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin-bottom: 1.75rem;
+}
+
+.field {
+  margin-bottom: 1.1rem;
+  text-align: left;
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.4em;
+}
+
+.field input {
+  width: 100%;
+  padding: 0.65em 0.8em;
+  border: 1px solid #d9cdb2;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.field input:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 1px;
+  border-color: var(--rose);
+}
+
+.field-row {
+  display: flex;
+  justify-content: flex-end;
+  margin: -0.5rem 0 1.25rem;
+  font-size: 0.85rem;
+}
+
+.form-error {
+  background: var(--error-bg);
+  color: var(--error);
+  border: 1px solid #eccac4;
+  border-radius: 4px;
+  padding: 0.6em 0.8em;
+  font-size: 0.88rem;
+  margin: 0 0 1.1rem;
+}
+
+.auth-alt {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.auth-divider {
+  text-align: center;
+  color: #c7bda3;
+  font-size: 0.8rem;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.auth-back {
+  padding: 1.5rem 0 0 2rem;
+}
+
+.auth-back a {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+/* ---------- logged-in app shell ---------- */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-title {
+  text-align: center;
+  padding: 1.75rem 1rem 0.75rem;
+}
+
+.app-title h1 {
+  font-size: 1.9rem;
+}
+
+.app-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  border-top: 1px solid var(--gold-line);
+  border-bottom: 1px solid var(--gold-line);
+  padding: 0 1.5rem;
+  background: var(--bg-alt);
+  position: relative;
+}
+
+.app-menu nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.app-menu a {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.9rem 0.1rem;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+}
+
+.app-menu a:hover,
+.app-menu a:focus-visible {
+  text-decoration: none;
+  color: var(--green-dark);
+}
+
+.app-menu a.active {
+  border-bottom-color: var(--rose);
+  color: var(--green-dark);
+}
+
+.app-menu .bell {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink);
+}
+
+.app-menu .bell svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.app-menu .bell .dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rose);
+  border: 1.5px solid var(--bg-alt);
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 4rem;
+}
+
+/* composer bar */
+.composer {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  background: var(--white);
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.composer .avatar {
+  flex-shrink: 0;
+}
+
+.composer input {
+  flex: 1;
+  border: none;
+  background: var(--bg-alt);
+  border-radius: 20px;
+  padding: 0.65em 1em;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+.composer input::placeholder {
+  color: #9a917c;
+}
+
+.composer input:focus-visible {
+  outline: 2px solid var(--rose);
+}
+
+/* avatar (initials, no image assets needed) */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--white);
+  font-family: var(--serif);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.avatar.rose { background: var(--rose); }
+.avatar.gold { background: var(--gold); }
+
+/* feed */
+.post {
+  background: var(--white);
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.post-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.post-head .who {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.post-head .when {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  display: block;
+}
+
+.post p {
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+}
+
+.post-photo {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--gold-line);
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, var(--bg-alt), #e6d9be);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.post-actions {
+  display: flex;
+  gap: 1.25rem;
+  border-top: 1px solid #f0e8d6;
+  padding-top: 0.6rem;
+}
+
+.post-actions button {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  cursor: pointer;
+  padding: 0.2em 0.3em;
+}
+
+.post-actions button:hover {
+  color: var(--rose);
+}
+
+.post-actions svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* simple stub pages (about / contact / settings) */
+.page-block {
+  background: var(--white);
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+}
+
+.page-block h2 {
+  font-size: 1.3rem;
+}
+
+/* profile picture (settings) */
+.profile-block {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.profile-pic {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--gold-line);
+}
+
+.profile-pic-placeholder {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+/* an <img> standing in for the initials avatar elsewhere (composer, etc.) */
+img.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* people list */
+.person-list {
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--gold-line);
+  padding-top: 0.5rem;
+}
+
+.person-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid #f0e8d6;
+}
+
+.person-row:last-child {
+  border-bottom: none;
+}
+
+.person-row .info strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.person-row .info span {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 720px) {
+  .site-header {
+    padding: 1.25rem 1.25rem;
+  }
+  .hero {
+    padding: 2.5rem 1.5rem 3rem;
+  }
+  .features {
+    grid-template-columns: 1fr;
+    padding: 0.5rem 1.5rem 3rem;
+    gap: 2rem;
+  }
+  .app-menu {
+    gap: 1rem;
+    overflow-x: auto;
+  }
+  .app-menu nav {
+    gap: 1.1rem;
+  }
+  .app-menu .bell {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}

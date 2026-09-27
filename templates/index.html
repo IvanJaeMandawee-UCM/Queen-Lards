@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Queen's Lards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wordmark"><a href="{{ url_for('index') }}">Queen's Lards</a></div>
+    <div class="nav-actions">
+      <a class="btn btn-outline" href="{{ url_for('login') }}">Log in</a>
+      <a class="btn btn-primary" href="{{ url_for('signup') }}">Sign up</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>A place to keep her stories close.</h1>
+      <p>
+        Queen's Lards is where our family gathers the photos, recipes, and
+        little stories she loved to tell — so none of it gets lost, and
+        everyone can add to it whenever they think of something new.
+      </p>
+      <div>
+        <a class="btn btn-primary" href="{{ url_for('signup') }}">Join the family page</a>
+      </div>
+    </section>
+
+    <div class="flourish" aria-hidden="true">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M20 6c-4 6-4 12 0 17M20 6c4 6 4 12 0 17" stroke-linecap="round"/>
+        <path d="M20 23v11" stroke-linecap="round"/>
+        <path d="M9 33c4-2 7-2 11 0M20 33c4-2 7-2 11 0" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <section class="features">
+      <div class="feature">
+        <h3>Photos &amp; memories</h3>
+        <p>Old albums, recent snapshots, and the ones on everyone's phones — kept in one place instead of scattered across group chats.</p>
+      </div>
+      <div class="feature">
+        <h3>Family recipes</h3>
+        <p>Her handwriting on a recipe card is worth keeping exactly as she wrote it — measurements, notes in the margins and all.</p>
+      </div>
+      <div class="feature">
+        <h3>Stories &amp; messages</h3>
+        <p>A place for cousins, grandkids, and old friends to write down the memory they keep coming back to.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Made by the family, for the family.
+  </footer>
+
+</body>
+</html>

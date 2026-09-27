@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>People · Queen's Lards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="app-shell">
+
+  {% set active = 'people' %}
+  {% include 'partials/nav_app.html' %}
+
+  <main class="app-main">
+    <div class="page-block">
+      <h2>Family &amp; friends</h2>
+      <p>Keep a shared list of names and numbers for everyone who's part of Queen's Lards.</p>
+
+      <form method="POST" action="{{ url_for('add_person') }}">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" value="{{ name or '' }}" placeholder="e.g. Tita Rose">
+        </div>
+
+        <div class="field">
+          <label for="number">Number</label>
+          <input type="tel" id="number" name="number" value="{{ number or '' }}" placeholder="e.g. +1 555-0123">
+        </div>
+
+        {% if error %}
+        <p class="form-error" role="alert">{{ error }}</p>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary">Add person</button>
+      </form>
+
+      <div class="person-list">
+        {% for person in people %}
+        <div class="person-row">
+          <div class="avatar {{ 'rose' if loop.index0 % 3 == 1 else ('gold' if loop.index0 % 3 == 2 else '') }}">{{ person.name[0] | upper }}</div>
+          <div class="info">
+            <strong>{{ person.name }}</strong>
+            <span>{{ person.number }}</span>
+          </div>
+        </div>
+        {% else %}
+        <p>No one's been added yet.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

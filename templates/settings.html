@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Settings · Queen's Lards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="app-shell">
+
+  {% set active = 'settings' %}
+  {% include 'partials/nav_app.html' %}
+
+  <main class="app-main">
+    <div class="page-block">
+      <h2>Profile</h2>
+
+      <div class="profile-block">
+        {% if user_picture %}
+        <img class="profile-pic" src="{{ url_for('static', filename='uploads/' + user_picture) }}" alt="Your profile picture">
+        {% else %}
+        <div class="profile-pic-placeholder">{{ (user_name or 'Y')[0] | upper }}</div>
+        {% endif %}
+        <div>
+          <strong>{{ user_name }}</strong>
+        </div>
+      </div>
+
+      <form method="POST" action="{{ url_for('settings') }}" enctype="multipart/form-data">
+        <div class="field">
+          <label for="picture">Profile picture</label>
+          <input type="file" id="picture" name="picture" accept="image/png, image/jpeg, image/gif, image/webp">
+        </div>
+
+        {% if error %}
+        <p class="form-error" role="alert">{{ error }}</p>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary">Upload photo</button>
+      </form>
+      <p style="margin-top: 0.75rem; font-size: 0.85rem;">Works from your phone's camera roll or your computer's files — whatever your browser's file picker shows you.</p>
+    </div>
+
+    <div class="page-block" style="margin-top: 1.5rem;">
+      <h2>Account</h2>
+      <p><a href="{{ url_for('logout') }}">Log out</a></p>
+    </div>
+  </main>
+
+</body>
+</html>
